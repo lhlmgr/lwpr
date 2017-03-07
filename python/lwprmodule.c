@@ -837,54 +837,6 @@ static PyTypeObject noddy_NoddyType = {
     "lwpr.LWPR doc",           /* tp_doc */
 };
 
-
-// static PyTypeObject PyLWPR_Type = {
-//     PyObject_HEAD_INIT(NULL)
-//     0,                           /* ob_size */
-//     "lwpr.LWPR",                 /* tp_name */
-//     sizeof(PyLWPR)   ,           /* tp_basicsize */
-//     0,                           /* tp_itemsize */
-//     (destructor) PyLWPR_dealloc, /* tp_dealloc */
-//     0,                           /* tp_print */
-//     0,                           /* tp_getattr */
-//     0,                           /* tp_setattr */
-//     0,                           /* tp_compare */
-//     (reprfunc) PyLWPR_repr,      /* tp_repr */
-//     0,                           /* tp_as_number */
-//     0,                           /* tp_as_sequence */
-//     0,                           /* tp_as_mapping */
-//     0,                           /* tp_hash */
-//     0,                           /* tp_call */
-//     0,                           /* tp_str */
-//     0,                           /* tp_getattro */
-//     0,                           /* tp_setattro */
-//     0,                           /* tp_as_buffer */
-//     Py_TPFLAGS_DEFAULT,          /* tp_flags */
-//     "This class encapsulates an LWPR model for learning regression functions\n"
-//     "with a possibly high number of input dimensions. You can create a new\n"
-//     "LWPR model by something like\n"
-//     "   model = LWPR(12,4)   # 12 inputs, 4 outputs\n"
-//     "or you can read a model from an XML file\n"
-//     "   model = LWPR('file.xml')\n", /* tp_doc */
-//     0,		                     /* tp_traverse */
-//     0,		                     /* tp_clear */
-//     0,      		               /* tp_richcompare */
-//     0,		                     /* tp_weaklistoffset */
-//     0,		                     /* tp_iter */
-//     0,		                     /* tp_iternext */
-//     PyLWPR_methods,        PyLWPR_methods      /* tp_methods */
-//     0,                           /* tp_members */
-//     PyLWPR_getseters,            /* tp_getset */
-//     0,                           /* tp_base */
-//     0,                           /* tp_dict */
-//     0,                           /* tp_descr_get */
-//     0,                           /* tp_descr_set */
-//     0,                           /* tp_dictoffset */
-//     0,                           /* tp_init */
-//     0,                           /* tp_alloc */
-//     PyLWPR_new                   /* tp_new */
-// }; 
-
 static PyMethodDef lwpr_methods[] = {{NULL}};
 
 #ifndef PyMODINIT_FUNC	/* declarations for DLL import/export */
@@ -905,7 +857,6 @@ static struct PyModuleDef moduledef = {
 
 /* ==== Initialize the C_test functions ====================== */
 PyObject* PyInit_lwpr(void){
-
     noddy_NoddyType.tp_new = PyLWPR_new;
     noddy_NoddyType.tp_getset = PyLWPR_getseters;
     noddy_NoddyType.tp_methods = PyLWPR_methods;
@@ -920,7 +871,7 @@ PyObject* PyInit_lwpr(void){
     if (module == NULL)
         return NULL;
 
-    PyModule_AddStringConstant(module, "__author__", "Adrian Neumann <adrian_neumann@gmx.de>");
+    PyModule_AddStringConstant(module, "__author__", "Sethu Vijayakumar <asethu.vijayakumar@ed.ac.uk>");
     PyModule_AddStringConstant(module, "__version__", "1.2.6");
 
     Py_INCREF(&noddy_NoddyType);
@@ -931,15 +882,3 @@ PyObject* PyInit_lwpr(void){
     // return newly created module
     return module;
 }
-/*
-
-PyMODINIT_FUNC initlwpr(void) {
-   PyObject* m;
-
-   if (PyType_Ready(&PyLWPR_Type) < 0) return;
-
-   Py_INCREF(&PyLWPR_Type);
-   PyModule_AddObject(moduledef, "LWPR", (PyObject *)&PyLWPR_Type);
-   import_array();
-}
-*/
