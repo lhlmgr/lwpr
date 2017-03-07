@@ -10,9 +10,9 @@ lwprsources = ['lwprmodule.c',
                '../src/lwpr_mem.c', 
                '../src/lwpr_aux.c']
 
-configs = parse_config_h(file('../include/lwpr_config.h'))
+configs = parse_config_h(open('../include/lwpr_config.h'))
 
-if configs.has_key('HAVE_LIBEXPAT') and configs['HAVE_LIBEXPAT']:
+if 'HAVE_LIBEXPAT'in configs and configs['HAVE_LIBEXPAT']:
    module = Extension('lwpr', 
       include_dirs = ['../include', os.path.join(get_python_lib(),'numpy','core','include')],
       libraries = ['expat'],   
