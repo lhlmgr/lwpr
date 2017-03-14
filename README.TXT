@@ -1,4 +1,4 @@
-This repository is a fork of [LWPR](http://wcms.inf.ed.ac.uk/ipab/slmc/research/software-lwpr) for Python 3.
+This repository is a fork of http://wcms.inf.ed.ac.uk/ipab/slmc/research/software-lwpr for Python 3.
 
 Contents of the LWPR library  
 (C) 2007 Stefan Klanke and Sethu Vijayakumar
