@@ -46,8 +46,9 @@ static const char *GaussBiSq[]={"Gaussian","BiSquare"};
 static void PyLWPR_dealloc(PyLWPR* self) {
    lwpr_free_model(&self->model);
    free(self->extra_in);
-   //self->ob_type->tp_free((PyObject*)self);
-   PyObject_GC_UnTrack((PyObject *)self);
+    
+   // as described in issue 1: https://github.com/lhlmgr/lwpr/issues/1#issuecomment-475207397
+   Py_TYPE(self)->tp_free((PyObject*)self);
 }
 
 static PyObject *get_array_from_vector(int n, const double *data) {
